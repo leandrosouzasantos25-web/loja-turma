@@ -1,32 +1,61 @@
-# classe produto
+"""Classe Produto (Aula 3)."""
 
-#definindo a classe produto
+
 class Produto:
+    """Um produto à venda na loja."""
 
-    #Definindo atributos e privacidade
-    def __init__(self, nome, preco, estoque):
+    def __init__(self, nome, preco, estoque, categoria):
+        # Construtor: é chamado quando fazemos Produto("Mouse", 100, 20, eletronicos)
+        # Atributos PRIVADOS (dois sublinhados): só a própria classe mexe neles
         self.__nome = nome
-        self.__preco = 2.0
-        self.__estoque = 0
+        self.__preco = 0.0
+        self.__categoria = categoria          
 
-#definindo metodo Regra RN1 alterar preço de outra(chamar outra função)  
-        self.alterar_preco(preco)
-        if preco < 0:
-            print ("Preço não pode ser negativo")
+        self.alterar_preco(preco)    # RN1: preço maior que zero
+        if estoque < 0:                    # RN2: estoque não pode ser negativo
+            raise ValueError("O estoque não pode ser negativo.")
+        self.__estoque = estoque
 
-            self.baixar_estoque(estoque)
-            if estoque < 0:
-                print ("Estoque não pode ser negativo")
+    # metodos construtores propriedades (permitem LER, mas não alterar direto)
+    @property
+    def nome(self):
+        return self.__nome
 
-                self.repor_estoque(estoque)
+    @property
+    def preco(self):
+        return self.__preco
 
+    @property
+    def estoque(self):
+        return self.__estoque
 
+    @property
+    def categoria(self):
+        return self.__categoria
+
+    # ---------- métodos (ações) ----------
     def alterar_preco(self, valor):
-        if valor < 0:
-            print ("Preço invalido")
-        self.__preco = float (valor)
+        """Encapsulamento: o preço só muda se for válido."""
+        if valor <= 0:
+            raise ValueError(f"Preço inválido para {self.__nome}: precisa ser maior que zero.")
+        self.__preco = float(valor)
+
+    def tem_estoque(self, quantidade):
+        """Responde se existem pelo menos `quantidade` unidades."""
+        return self.__estoque >= quantidade
 
     def baixar_estoque(self, quantidade):
-        if quantidade < 0:
-            print ("Não tem estoque")
-        self.__estoque = int (quantidade)
+        """Tira unidades do estoque (quando alguém compra)."""
+        if not self.tem_estoque(quantidade):
+            raise ValueError(
+                f"Estoque insuficiente de {self.__nome}: há {self.__estoque} unidade(s)."
+            )
+        self.__estoque -= quantidade
+
+    def repor_estoque(self, quantidade):
+        """Devolve unidades ao estoque."""
+        self.__estoque += quantidade
+
+    def __str__(self):
+        # __str__ define o que aparece quando fazemos print(produto)
+        return f"{self.__nome} - R$ {self.__preco:.2f} ({self.__estoque} em estoque) [{self.__categoria}]"
