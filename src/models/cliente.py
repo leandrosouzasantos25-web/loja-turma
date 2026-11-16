@@ -1,19 +1,5 @@
 """
-Classe Cliente (aula de 10/11).
-
-Fontes para estudar:
-- Classes, objetos, atributos e métodos:
-  https://docs.python.org/pt-br/3/tutorial/classes.html
-- Atributos privados (__nome) e protegidos (_nome):
-  https://docs.python.org/pt-br/3/tutorial/classes.html#private-variables
-- @property (ler um atributo privado):
-  https://docs.python.org/pt-br/3/library/functions.html#property
-- Listas: append e remove:
-  https://docs.python.org/pt-br/3/tutorial/datastructures.html#more-on-lists
-- raise: como gerar um erro:
-  https://docs.python.org/pt-br/3/tutorial/errors.html#raising-exceptions
-- Livro: KEOGH, J.; GIANNINI, M. OOP desmistificado. Alta Books, 2005.
-"""
+Classe Cliente (aula de 10/11)."""
 
 from models.carrinho import Carrinho
 

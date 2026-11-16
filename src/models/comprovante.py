@@ -24,3 +24,4 @@ class Comprovante(ABC):
     @abstractmethod
     def gerar_comprovante(self):
         """Devolve o texto do comprovante."""
+        #Faltei essa aula por isso não fiz alterações.

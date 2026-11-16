@@ -21,7 +21,7 @@ class Categoria:
     """Grupo de produtos da loja (ex.: Eletrônicos, Livros)."""
 
     def __init__(self, nome):
-        # Atributo PRIVADO (dois sublinhados): só a própria classe mexe nele
+        # At. PRIV.: só a própria classe mexe nele
         self.__nome = ""
         self.renomear(nome)    # usa a mesma validação do renomear()
 
@@ -31,7 +31,7 @@ class Categoria:
         return self.__nome
 
     def renomear(self, nome):
-        """Troca o nome da categoria. O nome não pode ser vazio."""
+       
         nome = nome.strip()
         if nome == "":
             raise ValueError("O nome da categoria não pode ser vazio.")

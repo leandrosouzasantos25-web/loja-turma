@@ -33,11 +33,11 @@ class ItemCarrinho:
         return self.__quantidade
 
     def aumentar(self, quantidade):
-        """Soma mais unidades ao item (RN5: produto repetido aumenta a quantidade)."""
+        """Soma mais unidades ao item RN5: produto repetido soma mais unidades ao carrinho."""
         self.__quantidade += quantidade
 
     def subtotal(self):
-        """Preço do produto x quantidade."""
+        #preço do produto x quantidade.
         return round(self.__produto.preco * self.__quantidade, 2)
 
     def __str__(self):

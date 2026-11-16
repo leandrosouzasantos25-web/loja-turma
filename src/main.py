@@ -28,7 +28,7 @@ Fontes para estudar:
 from models.cartao import Cartao
 from models.categoria import Categoria
 from models.cliente import Cliente
-from models.pagamento import Pagamento
+from models.pagamento import pagamento
 from models.pedido import Pedido
 from models.pix import Pix
 from models.produto import Produto

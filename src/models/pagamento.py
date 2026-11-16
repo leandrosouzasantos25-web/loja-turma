@@ -38,3 +38,4 @@ class Pagamento(ABC):
     @abstractmethod
     def descricao(self):
         """Nome da forma de pagamento, para mostrar na tela."""
+        #esses que não entendi direito deixei com os comentarios da prof. Stela

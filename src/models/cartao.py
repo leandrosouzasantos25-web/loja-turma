@@ -23,13 +23,13 @@ class Cartao(Pagamento, Comprovante):
     INTERFACE: Cartao também implementa o contrato Comprovante.
     """
 
-    JUROS = 0.10    # RN9: acima de 3 parcelas, o total fica 10% maior
+    JUROS = 0.10  # RN9: significa que acima de 3 parcelas o total fica 10% maior
 
     def __init__(self, valor, parcelas=1):
         # parcelas=1 é um parâmetro OPCIONAL: simula a sobrecarga em Python.
         # Cartao(100) e Cartao(100, 6) funcionam com o mesmo construtor.
         super().__init__(valor)    # super() chama o construtor de Pagamento
-        if parcelas < 1 or parcelas > 12:    # RN10: de 1 a 12 parcelas
+        if parcelas < 1 or parcelas > 12:    # RN10 aplica a quantidade de parcelas
             raise ValueError("O cartão aceita de 1 a 12 parcelas.")
         self.__parcelas = parcelas
 

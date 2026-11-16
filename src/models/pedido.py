@@ -20,14 +20,12 @@ from models.pix import Pix
 
 class Pedido:
     """
-    Compra de um cliente.
-
-    AGREGAÇÃO: o pedido recebe os itens que o carrinho já criou.
-    POLIMORFISMO: total() chama calcular_total() sem saber se é Pix ou Cartao.
+     o pedido recebe os itens que o carrinho já criou.
+     total() chama calcular_total() sem saber se é Pix ou Cartao.
     """
 
     def __init__(self, numero, cliente, forma_pagamento, parcelas=1):
-        if cliente.carrinho.esta_vazio():    # RN6: carrinho vazio não fecha pedido
+        if cliente.carrinho.esta_vazio():    # RN6: impedir fechamento de pedido com carrinho vazio
             raise ValueError("O carrinho está vazio: não dá para fechar o pedido.")
 
         self.__numero = numero

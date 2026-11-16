@@ -1,20 +1,3 @@
-"""
-Classe Carrinho (aula de 10/11).
-
-Fontes para estudar:
-- Listas: append e remove:
-  https://docs.python.org/pt-br/3/tutorial/datastructures.html#more-on-lists
-- Laço for:
-  https://docs.python.org/pt-br/3/tutorial/controlflow.html#for-statements
-- Parâmetro opcional (valor padrão):
-  https://docs.python.org/pt-br/3/tutorial/controlflow.html#default-argument-values
-- Atributos privados (__nome) e protegidos (_nome):
-  https://docs.python.org/pt-br/3/tutorial/classes.html#private-variables
-- raise: como gerar um erro:
-  https://docs.python.org/pt-br/3/tutorial/errors.html#raising-exceptions
-- Livro: GUEDES, G. T. A. UML 2: uma abordagem prática. 3. ed. Novatec, 2018.
-"""
-
 from models.item_carrinho import ItemCarrinho
 
 
@@ -27,11 +10,11 @@ class Carrinho:
     """
 
     def __init__(self):
-        self.__itens = []    # lista de objetos ItemCarrinho
+        self.__itens = []    #objetos ItemCarrinho
 
     @property
     def itens(self):
-        # Devolve uma CÓPIA da lista, para ninguém alterar a original por fora
+        
         return list(self.__itens)
 
     def __buscar_item(self, produto):
@@ -42,7 +25,7 @@ class Carrinho:
         return None
 
     def adicionar(self, produto, quantidade=1):
-        """Coloca um produto no carrinho (ou aumenta a quantidade, se já estiver lá)."""
+        """esse Def adiciona ao carrinho ou soma aos demais produtos que já estejam lá."""
         if quantidade <= 0:
             raise ValueError("A quantidade precisa ser maior que zero.")
 
@@ -62,14 +45,14 @@ class Carrinho:
             self.__itens.append(ItemCarrinho(produto, quantidade))
 
     def remover(self, produto):
-        """Tira um produto do carrinho."""
+        
         item = self.__buscar_item(produto)
         if item is None:
             raise ValueError(f"{produto.nome} não está no carrinho.")
         self.__itens.remove(item)
 
     def total(self):
-        """Soma os subtotais de todos os itens."""
+        """Somatoria de todos itens do carrinho."""
         soma = 0.0
         for item in self.__itens:
             soma += item.subtotal()
@@ -79,7 +62,7 @@ class Carrinho:
         return len(self.__itens) == 0
 
     def limpar(self):
-        """Esvazia o carrinho (RN7: depois de confirmar o pedido)."""
+        """Esse comando e necessario para limpar o carrinho de acordo com a RN7."""
         self.__itens = []
 
     def __str__(self):
